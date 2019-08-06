@@ -2,7 +2,7 @@
 
 Bot that reads [@bodegabot](https://twitter.com/bodegabot) tweets and replies with guesses based on a fixed list of former employees.
 
-See the resulting accountn at [@BodegaBotGuess](https://twitter.com/BodegaBotGuess/with_replies)!
+See the resulting account at [@BodegaBotGuess](https://twitter.com/BodegaBotGuess)!
 
 ## How To Add Yourself
 
