@@ -29,14 +29,10 @@ tweets.each do |tweet|
   if text
     BodegaBotGuesser.logger.info(text)
 
-    # if dry_run
-    #   puts "DRY RUN: #{text}"
-    # else
-    #   twitter.quote_retweet(
-    #     tweet,
-    #     text
-    #   )
-    # end
+    twitter.reply(
+      text: text,
+      tweet_id: tweet.id
+    )
   end
 end
 
