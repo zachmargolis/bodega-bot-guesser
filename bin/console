@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+lib = File.join(__dir__, '..', 'lib')
+$LOAD_PATH.unshift(lib)
+
+require 'dotenv'
+require 'irb'
+
+Dotenv.load(*ARGV)
+ARGV.clear
+
+IRB.start(__FILE__)
