@@ -1,0 +1,11 @@
+# These keys from from the source of BodegaBot
+# https://cheapbotsdonequick.com/source/BodegaBot
+# "employees": ["employees","founders","designers","programmers","engineers","product managers","interns"],
+# The values should be Twitter handles of people who are okay being tweeted at
+"employees":
+"founders":
+"designers":
+"programmers":
+"engineers":
+"product managers":
+"interns":
