@@ -8,12 +8,17 @@
   - chiangku
   - jeeyoungk
   - sentiental
+  - tuanycakes
 "founders":
 "designers":
-"programmers": &engineers
+"programmers":
   - chiangku
   - jeeyoungk
   - sentiental
-"engineers": *engineers
+"engineers":
+  - chiangku
+  - jeeyoungk
+  - sentiental
+  - tuanycakes
 "product managers":
 "interns":
