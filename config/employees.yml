@@ -6,6 +6,7 @@
 #
 "employees":
   - chiangku
+  - cytochrome
   - jeeyoungk
   - sentiental
   - tuanycakes
@@ -13,10 +14,12 @@
 "designers":
 "programmers":
   - chiangku
+  - cytochrome
   - jeeyoungk
   - sentiental
 "engineers":
   - chiangku
+  - cytochrome
   - jeeyoungk
   - sentiental
   - tuanycakes
