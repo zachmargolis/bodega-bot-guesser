@@ -3,10 +3,11 @@ require 'yaml'
 
 module BodegaBotGuesser
   class Generator
-    attr_reader :source_tweet_text, :config
+    attr_reader :text, :username, :config
 
-    def initialize(source_tweet_text, config = Config.default)
-      @source_tweet_text = source_tweet_text
+    def initialize(text:, username:, config: Config.default)
+      @text = text
+      @username = username
       @config = config
     end
 
@@ -21,13 +22,13 @@ module BodegaBotGuesser
       return nil if employees.count < 2
 
       guesses = employees.sample(2).map { |username| "@#{username}" }
-      'Hey %s and %s, was this you?' % guesses
+      "@#{username} Hey %s and %s, was this you?" % guesses
     end
 
     # Parses a tweet via regex
     # @return [ParsedTweet, nil] struct containing matched parts, or nil if it does not match
     def parse_tweet
-      match = source_tweet_text.match(/ex-(?<company>[^ ]+) (?<job_title>.+) want/)
+      match = text.match(/ex-(?<company>[^ ]+) (?<job_title>.+) want/)
       if match
         ParsedTweet.new.tap do |parsed|
           parsed.company = match[:company]
@@ -42,7 +43,7 @@ module BodegaBotGuesser
       DEFAULT_PATH = File.join(BodegaBotGuesser.root, 'config', 'employees.yml')
 
       def self.default
-        new(YAML.safe_load(DEFAULT_PATH, [], [], true))
+        new(YAML.safe_load(File.read(DEFAULT_PATH), [], [], true))
       end
 
       attr_reader :yaml
