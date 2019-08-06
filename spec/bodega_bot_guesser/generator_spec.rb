@@ -48,8 +48,8 @@ RSpec.describe BodegaBotGuesser::Generator do
 
       it 'generates a tweet' do
         expect(generator.generate_tweet_text).
-          to eq('@bodegabot Hey @c and @d, was this you?').
-          or eq('@bodegabot Hey @d and @c, was this you?')
+          to eq('@bodegabot Hey @c and @d, is this you two?').
+          or eq('@bodegabot Hey @d and @c, is this you two?')
       end
     end
 
