@@ -42,7 +42,7 @@ module BodegaBotGuesser
       DEFAULT_PATH = File.join(BodegaBotGuesser.root, 'config', 'employees.yml')
 
       def self.default
-        new(YAML.safe_load(DEFAULT_PATH, [], [], true))
+        new(YAML.safe_load(File.read(DEFAULT_PATH), [], [], true))
       end
 
       attr_reader :yaml
