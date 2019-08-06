@@ -10,10 +10,10 @@
   - sentiental
 "founders":
 "designers":
-"programmers": *engineers
-"engineers": &engineers
+"programmers": &engineers
   - chiangku
   - jeeyoungk
   - sentiental
+"engineers": *engineers
 "product managers":
 "interns":

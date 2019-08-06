@@ -22,7 +22,7 @@ module BodegaBotGuesser
       return nil if employees.count < 2
 
       guesses = employees.sample(2).map { |username| "@#{username}" }
-      "@#{username} Hey %s and %s, was this you?" % guesses
+      "@#{username} Hey %s and %s, is this you two?" % guesses
     end
 
     # Parses a tweet via regex
