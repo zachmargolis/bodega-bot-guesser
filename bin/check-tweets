@@ -41,6 +41,9 @@ tweets.each do |tweet|
 end
 
 if !tweets.empty?
-  BodegaBotGuesser::DB.update_watched_account(watched_account, tweets.last.id)
+  BodegaBotGuesser::DB.update_watched_account(
+    twitter_username: watched_account.twitter_username,
+    last_tweet_id: tweets.last.id
+  )
   BodegaBotGuesser.logger.info("updated last_tweet_id=#{tweets.last.id}")
 end

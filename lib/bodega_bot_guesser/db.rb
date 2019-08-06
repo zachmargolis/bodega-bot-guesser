@@ -1,14 +1,21 @@
 require 'bodega_bot_guesser'
 require 'sequel'
+require 'uri'
 
 module BodegaBotGuesser
   class DB
     Sequel::Model.plugin :timestamps
 
-    CONNECTION = Sequel.connect(ENV['DATABASE_URL'])
+    def self.database_url
+      ENV['DATABASE_URL']
+    end
+
+    def self.database_name
+      URI.parse(database_url).path.gsub(%r|^/|, '')
+    end
 
     def self.connection
-      CONNECTION
+      @connection ||= Sequel.connect(database_url)
     end
 
     def self.migrate
@@ -34,19 +41,17 @@ module BodegaBotGuesser
       end
     end
 
-    # @param watched_account [WatchedAccount]
-    # @param new_last_tweet_id [String]
-    def self.update_watched_account(watched_account, new_last_tweet_id)
+    def self.update_watched_account(twitter_username:, last_tweet_id:)
       connection[:watched_accounts].
         insert_conflict(
           target: :twitter_username,
           update: {
-            last_tweet_id: new_last_tweet_id,
+            last_tweet_id: last_tweet_id,
             updated_at: Sequel::CURRENT_TIMESTAMP
           }
         ).insert(
-          last_tweet_id: new_last_tweet_id,
-          twitter_username: watched_account.twitter_username,
+          last_tweet_id: last_tweet_id,
+          twitter_username: twitter_username,
           created_at: Sequel::CURRENT_TIMESTAMP,
           updated_at: Sequel::CURRENT_TIMESTAMP
         )
