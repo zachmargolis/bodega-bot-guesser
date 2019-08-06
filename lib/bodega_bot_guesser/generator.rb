@@ -20,7 +20,7 @@ module BodegaBotGuesser
       employees = config.lookup(parsed.job_title)
       return nil if employees.count < 2
 
-      guesses = employees.sample(2)
+      guesses = employees.sample(2).map { |username| "@#{username}" }
       'Hey %s and %s, was this you?' % guesses
     end
 
