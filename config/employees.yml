@@ -1,11 +1,19 @@
 # These keys from from the source of BodegaBot
 # https://cheapbotsdonequick.com/source/BodegaBot
 # "employees": ["employees","founders","designers","programmers","engineers","product managers","interns"],
-# The values should be Twitter handles of people who are okay being tweeted at
+#
+# NOTE: If you're adding somebody other than yourself, make sure you have their permission!
+#
 "employees":
+  - chiangku
+  - jeeyoungk
+  - sentiental
 "founders":
 "designers":
-"programmers":
-"engineers":
+"programmers": *engineers
+"engineers": &engineers
+  - chiangku
+  - jeeyoungk
+  - sentiental
 "product managers":
 "interns":
