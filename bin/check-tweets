@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+lib = File.join(__dir__, '..', 'lib')
+$LOAD_PATH.unshift(lib)
+
+require 'bodega_bot_guesser'
+require 'bodega_bot_guesser/db'
+require 'bodega_bot_guesser/twitter'
+require 'bodega_bot_guesser/generator'
+
+watched_account = BodegaBotGuesser::DB.load_watched_account('bodegabot')
+
+twitter = BodegaBotGuesser::Twitter.new
+
+tweets = twitter.tweets_since(
+  username: watched_account.twitter_username,
+  last_tweet_id: watched_account.last_tweet_id
+).sort_by(&:created_at)
+
+BodegaBotGuesser.logger.info("downloaded num_tweets=#{tweets.size} last_tweet_id=#{watched_account.last_tweet_id}")
+
+tweets.each do |tweet|
+  BodegaBotGuesser.logger.debug(tweet.text)
+
+  generator = BodegaBotGuesser::Generator.new(text: tweet.text, username: tweet.user.screen_name)
+
+  text = generator.generate_tweet_text
+
+  if text
+    BodegaBotGuesser.logger.info(text)
+
+    # if dry_run
+    #   puts "DRY RUN: #{text}"
+    # else
+    #   twitter.quote_retweet(
+    #     tweet,
+    #     text
+    #   )
+    # end
+  end
+end
+
+if !tweets.empty?
+  BodegaBotGuesser::DB.update_watched_account(watched_account, tweets.last.id)
+  BodegaBotGuesser.logger.info("updated last_tweet_id=#{tweets.last.id}")
+end
