@@ -3,10 +3,13 @@
 lib = File.join(__dir__, '..', 'lib')
 $LOAD_PATH.unshift(lib)
 
-require 'dotenv'
+begin
+  require 'dotenv'
+  Dotenv.load(*ARGV)
+  ARGV.clear
+rescue LoadError
+  # it's OK to not have dotenv loaded, such as in production
+end
+
 require 'irb'
-
-Dotenv.load(*ARGV)
-ARGV.clear
-
 IRB.start(__FILE__)
