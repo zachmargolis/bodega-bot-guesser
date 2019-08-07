@@ -5,7 +5,9 @@
 # NOTE: If you're adding somebody other than yourself, make sure you have their permission!
 #
 "employees":
+  - bfezga
   - chiangku
+  - crabbylions
   - cytochrome
   - jeeyoungk
   - sentiental
@@ -24,4 +26,6 @@
   - sentiental
   - tuanycakes
 "product managers":
+  - bfezga
+  - crabbylions
 "interns":
