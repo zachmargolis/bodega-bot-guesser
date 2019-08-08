@@ -3,9 +3,13 @@ require 'bodega_bot_guesser/db'
 
 RSpec.describe BodegaBotGuesser::DB do
   before(:all) do
-    Sequel.connect('postgres://localhost/postgres') do |db|
-      db.execute "DROP DATABASE IF EXISTS %s" % [db.quote_identifier(BodegaBotGuesser::DB.database_name)]
-      db.execute "CREATE DATABASE %s" % [db.quote_identifier(BodegaBotGuesser::DB.database_name)]
+    begin
+      BodegaBotGuesser::DB.connection
+    rescue Sequel::DatabaseConnectionError
+      Sequel.connect('postgres://localhost/postgres') do |db|
+        db.execute "DROP DATABASE IF EXISTS %s" % [db.quote_identifier(BodegaBotGuesser::DB.database_name)]
+        db.execute "CREATE DATABASE %s" % [db.quote_identifier(BodegaBotGuesser::DB.database_name)]
+      end
     end
     BodegaBotGuesser::DB.migrate
   end
