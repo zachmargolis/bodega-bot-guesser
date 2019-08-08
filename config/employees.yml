@@ -2,9 +2,12 @@
 # https://cheapbotsdonequick.com/source/BodegaBot
 # "employees": ["employees","founders","designers","programmers","engineers","product managers","interns"],
 #
-# NOTE: If you're adding somebody other than yourself, make sure you have their permission!
+# NOTES:
+# 1. If you're adding somebody other than yourself, make sure you have their permission!
+# 2. Please keep each list alphabetized!
 #
 "employees":
+  - abhay
   - bfezga
   - chiangku
   - crabbylions
@@ -13,23 +16,22 @@
   - sentiental
   - tuanycakes
   - vslavich
-  - abhay
 "founders":
 "designers":
   - vslavich
 "programmers":
+  - abhay
   - chiangku
   - cytochrome
   - jeeyoungk
   - sentiental
-  - abhay
 "engineers":
+  - abhay
   - chiangku
   - cytochrome
   - jeeyoungk
   - sentiental
   - tuanycakes
-  - abhay
 "product managers":
   - bfezga
   - crabbylions
