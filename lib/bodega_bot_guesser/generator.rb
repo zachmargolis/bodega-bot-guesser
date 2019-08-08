@@ -15,11 +15,21 @@ module BodegaBotGuesser
     # @return [String, nil]
     def generate_tweet_text
       parsed = parse_tweet
-      return nil if parsed.nil?
-      return nil if parsed.company != 'Square'
+      if parsed.nil?
+        BodegaBotGuesser.logger.debug('unable to parse text')
+        return nil
+      end
+
+      if parsed.company != 'Square'
+        BodegaBotGuesser.logger.debug("no employees for company=#{parsed.company}")
+        return nil
+      end
 
       employees = config.lookup(parsed.job_title)
-      return nil if employees.count < 2
+      if employees.count < 2
+        BodegaBotGuesser.logger.debug("not enough employees count=#{employees.count} company=#{parsed.company} job_title=#{parsed.job_title}")
+        return nil
+      end
 
       guesses = employees.sample(2).map { |username| "@#{username}" }
       "@#{username} Hey %s and %s, is this you two?" % guesses
