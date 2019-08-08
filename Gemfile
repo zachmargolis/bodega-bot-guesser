@@ -10,3 +10,7 @@ group :test do
   gem 'dotenv'
   gem 'rspec'
 end
+
+group :development do
+  gem 'pry-byebug'
+end
