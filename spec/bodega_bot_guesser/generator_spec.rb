@@ -12,7 +12,7 @@ RSpec.describe BodegaBotGuesser::Generator do
     )
   end
 
-  subject(:generator) { BodegaBotGuesser::Generator.new(text: tweet_text, username: 'bodegabot', config: config) }
+  subject(:generator) { BodegaBotGuesser::Generator.new(text: tweet_text, config: config) }
 
   describe '#parse_tweet' do
     context 'when the tweet has the right format' do
@@ -48,8 +48,8 @@ RSpec.describe BodegaBotGuesser::Generator do
 
       it 'generates a tweet' do
         expect(generator.generate_tweet_text).
-          to eq('@bodegabot Hey @c and @d, is this you two?').
-          or eq('@bodegabot Hey @d and @c, is this you two?')
+          to eq('Hey @c and @d, is this you two?').
+          or eq('Hey @d and @c, is this you two?')
       end
     end
 

@@ -22,16 +22,16 @@ BodegaBotGuesser.logger.info("downloaded num_tweets=#{tweets.size} last_tweet_id
 tweets.each do |tweet|
   BodegaBotGuesser.logger.debug(tweet.text)
 
-  generator = BodegaBotGuesser::Generator.new(text: tweet.text, username: tweet.user.screen_name)
+  generator = BodegaBotGuesser::Generator.new(text: tweet.text)
 
   text = generator.generate_tweet_text
 
   if text
     BodegaBotGuesser.logger.info(text)
 
-    twitter.reply(
+    twitter.quote_tweet(
       text: text,
-      tweet_id: tweet.id
+      tweet_url: tweet.url.to_s
     )
   end
 end

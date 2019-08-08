@@ -26,6 +26,10 @@ module BodegaBotGuesser
       api.update!(text, in_reply_to_status_id: tweet_id)
     end
 
+    def quote_tweet(text:, tweet_url:)
+      api.update!("#{text}\n#{tweet_url}", attachment_url: tweet_url)
+    end
+
     # @api private
     def build_api
       ::Twitter::REST::Client.new do |config|

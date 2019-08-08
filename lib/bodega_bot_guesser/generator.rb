@@ -3,11 +3,10 @@ require 'yaml'
 
 module BodegaBotGuesser
   class Generator
-    attr_reader :text, :username, :config
+    attr_reader :text, :config
 
-    def initialize(text:, username:, config: Config.default)
+    def initialize(text:, config: Config.default)
       @text = text
-      @username = username
       @config = config
     end
 
@@ -32,7 +31,7 @@ module BodegaBotGuesser
       end
 
       guesses = employees.sample(2).map { |username| "@#{username}" }
-      "@#{username} Hey %s and %s, is this you two?" % guesses
+      "Hey %s and %s, is this you two?" % guesses
     end
 
     # Parses a tweet via regex
