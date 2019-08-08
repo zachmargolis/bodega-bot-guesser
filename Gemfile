@@ -5,6 +5,7 @@ gem 'pg'
 gem 'puma'
 gem 'sequel'
 gem 'twitter'
+gem 'rake'
 
 group :test do
   gem 'dotenv'
