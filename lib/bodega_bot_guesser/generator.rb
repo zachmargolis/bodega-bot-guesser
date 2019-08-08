@@ -40,7 +40,7 @@ module BodegaBotGuesser
     ParsedTweet = Struct.new(:company, :job_title)
 
     class Config
-      DEFAULT_PATH = File.join(BodegaBotGuesser.root, 'config', 'employees.yml')
+      DEFAULT_PATH = BodegaBotGuesser.root.join('config', 'employees.yml')
 
       def self.default
         new(YAML.safe_load(File.read(DEFAULT_PATH), [], [], true))

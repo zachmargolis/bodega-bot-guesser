@@ -1,8 +1,10 @@
 require 'logger'
+require 'pathname'
 
 module BodegaBotGuesser
+  # @return [Pathname] path to the root of this project (version control root)
   def self.root
-    File.expand_path(File.join(File.dirname(__FILE__), '..'))
+    Pathname.new(File.expand_path(File.join(__dir__, '..')))
   end
 
   LOGGER = Logger.new(STDOUT).tap do |logger|
@@ -12,6 +14,7 @@ module BodegaBotGuesser
     end
   end
 
+  # @return [Logger]
   def self.logger
     LOGGER
   end

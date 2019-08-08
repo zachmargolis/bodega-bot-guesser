@@ -24,7 +24,7 @@ module BodegaBotGuesser
     end
 
     def self.migrations_path
-      File.join(BodegaBotGuesser.root, 'db', 'migrations')
+      BodegaBotGuesser.root.join('db', 'migrations').to_s
     end
 
     WatchedAccount = Struct.new(:last_tweet_id, :twitter_username)
