@@ -1,6 +1,6 @@
 # bodega-bot-guesser
 
-Bot that reads [@bodegabot](https://twitter.com/bodegabot) tweets and replies with guesses based on a fixed list of former employees.
+Bot that reads [@bodegabot](https://twitter.com/bodegabot) tweets and quote-tweeets with guesses based on a fixed list of former employees.
 
 See the resulting account at [@BodegaBotGuess](https://twitter.com/BodegaBotGuess)!
 
@@ -11,6 +11,8 @@ Make a pull request to update the [`config/employees.yml`](config/employees.yml)
 ## Example
 
 ![Example tweet by bodega-bot-guesser](img/example.png)
+
+An [example tweet](https://twitter.com/BodegaBotGuess/status/1159909852631719936) by BodegaBotGuesser.
 
 ## How It Works
 
